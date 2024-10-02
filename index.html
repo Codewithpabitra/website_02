@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subha Mahalaya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            /* Align content to the bottom */
+            background-image: url('https://1.bp.blogspot.com/-tJHGr0Kezp8/Uk2Pwk6caZI/AAAAAAAAASo/F34cKfhvcJk/s1600/5.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+        }
+
+        .footer {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            /* Align content to the left */
+            padding: 20px;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Semi-transparent footer */
+            position: absolute;
+            bottom: 0;
+        }
+
+        header {
+            margin-right: 20px;
+            /* Space between buttons */
+            text-align: left;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin: 0;
+            transition: transform 0.3s;
+        }
+
+        h1:hover {
+            transform: scale(1.05);
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+        }
+
+        .theme-dropdown {
+            display: none;
+            /* Hidden by default */
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.9);
+            /* White background */
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        .theme-dropdown button {
+            background-color: transparent;
+            /* Transparent button */
+            color: #333;
+            /* Dark text color */
+            text-align: left;
+            /* Align text to the left */
+            padding: 10px;
+            width: 100%;
+            /* Full width */
+        }
+
+        .theme-dropdown button:hover {
+            background-color: rgba(204, 204, 204, 0.7);
+            /* Hover effect */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="footer">
+        <header>
+            <h1>Subha Mahalaya</h1>
+            <button id="celebrateButton">Celebrate</button>
+            <button id="themeButton">Themes</button>
+            <div id="themeDropdown" class="theme-dropdown">
+                <button class="theme-option" data-theme="Maa Aschen">Maa Aschen</button>
+                <button class="theme-option" data-theme="Subha Sasthi">Subha Sasthi</button>
+                <button class="theme-option" data-theme="Subha Saptami">Subha Saptami</button>
+                <button class="theme-option" data-theme="Subha Astami">Subha Astami</button>
+                <button class="theme-option" data-theme="Subha Nabami">Subha Nabami</button>
+                <button class="theme-option" data-theme="Bijaya Dasami">Bijaya Dasami</button>
+            </div>
+        </header>
+    </div>
+
+    <script>
+        document.getElementById('celebrateButton').addEventListener('click', function () {
+            alert('Wishing you a joyous Mahalaya!');
+        });
+
+        const themeButton = document.getElementById('themeButton');
+        const themeDropdown = document.getElementById('themeDropdown');
+
+        themeButton.addEventListener('click', function () {
+            // Toggle dropdown visibility
+            if (themeDropdown.style.display === 'none' || themeDropdown.style.display === '') {
+                themeDropdown.style.display = 'block';
+            } else {
+                themeDropdown.style.display = 'none';
+            }
+        });
+
+        document.querySelectorAll('.theme-option').forEach(option => {
+            option.addEventListener('click', function () {
+                const selectedTheme = this.getAttribute('data-theme');
+                alert(`You selected: ${selectedTheme}`);
+                themeDropdown.style.display = 'none'; // Close dropdown
+            });
+        });
+
+        // Close dropdown if clicked outside
+        window.addEventListener('click', function (event) {
+            if (!themeButton.contains(event.target) && !themeDropdown.contains(event.target)) {
+                themeDropdown.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
